@@ -54,12 +54,13 @@ export const hotel = {
     quantityOfPlaces: 30, //показывает количество мест (не меняется)
     priceByPlace: 20, //показывает, сколько стоит одно место в отеле
     bankAccount: 0, //сколько денег на счету нашего отеля, будет увеличиваться на priceByPlace когда заселяется человек
+    guestsId: 0,
     guests: {
-        0: {
-            firstName: 'Bohdan',
-            lastName: 'Rammfall',
-            money: 40,
-        },
+        // 0: {
+        //     firstName: 'Bohdan',
+        //     lastName: 'Rammfall',
+        //     money: 40,
+        // },
 
         /*
         guests: {
@@ -73,20 +74,35 @@ export const hotel = {
 
     },
     getLength() { //возвращает количество гостей в текущий момент
-        alert('aa');
+        //alert('aa');
+        return Object.keys(this.guests).length;
     },
     getActualFreePlace() { //который возвращает количество свободных мест(quantityOfPlaces - getLength())
-    
+        return this.quantityOfPlaces - this.getLength();
     },
     paidPerPlace() { //который добавляет к счету нашего отеля(bankAccount) стоимость одного места(priceByPlace)
     
     },
-    checkInGuest() { //который имеет 3 аргумента. Имя, фамилия и количество денег.
-    
+    checkInGuest(firstName, lastName, money) { //который имеет 3 аргумента. Имя, фамилия и количество денег.
+        // NewGuest();
+        this.guests[this.guestsId++] = {
+            firstName: firstName,
+            lastName: lastName,
+            money: money,
+        }
+        return 'Sorry, we have not free spaces';
     },
 
 
 };
+
+
+// function NewGuest () {
+//     this.guests = '22';
+//     this.guests[22] = 'sssssssss';
+
+
+// }
 
 // hotel.getLength();
 
