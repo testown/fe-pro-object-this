@@ -47,98 +47,37 @@ console.log(hotel.guests);
 Пробовать вызывать методы или свойства только в файле check.js. Этот объект доступен там
 */
 
-
-
 // export const hotel = new Object();
 export const hotel = {
-    quantityOfPlaces: 30, //показывает количество мест (не меняется)
-    priceByPlace: 20, //показывает, сколько стоит одно место в отеле
-    bankAccount: 0, //сколько денег на счету нашего отеля, будет увеличиваться на priceByPlace когда заселяется человек
-    guestsId: 0,
-    guests: {
-        // 0: {
-        //     firstName: 'Bohdan',
-        //     lastName: 'Rammfall',
-        //     money: 40,
-        // },
-
-        /*
-        guests: {
-            0: {
-                firstName: 'Bohdan',
-                lastName: 'Rammfall',
-                money: 40,
-            },
-        },
-        */
-
-    },
-    getLength() { //возвращает количество гостей в текущий момент
-        //alert('aa');
-        return Object.keys(this.guests).length;
-    },
-    getActualFreePlace() { //который возвращает количество свободных мест(quantityOfPlaces - getLength())
-        return this.quantityOfPlaces - this.getLength();
-    },
-    paidPerPlace() { //который добавляет к счету нашего отеля(bankAccount) стоимость одного места(priceByPlace)
-    
-    },
-    checkInGuest(firstName, lastName, money) { //который имеет 3 аргумента. Имя, фамилия и количество денег.
-        // NewGuest();
-        this.guests[this.guestsId++] = {
-            firstName: firstName,
-            lastName: lastName,
-            money: money,
-        }
-        return 'Sorry, we have not free spaces';
-    },
-
-
+  quantityOfPlaces: 30, //показывает количество мест (не меняется)
+  priceByPlace: 20, //показывает, сколько стоит одно место в отеле
+  bankAccount: 0, //сколько денег на счету нашего отеля, будет увеличиваться на priceByPlace когда заселяется человек
+  guestsId: 0,
+  guests: {},
+  getLength() {
+    //возвращает количество гостей в текущий момент
+    //alert('aa');
+    return Object.keys(this.guests).length;
+  },
+  getActualFreePlace() {
+    //который возвращает количество свободных мест(quantityOfPlaces - getLength())
+    return this.quantityOfPlaces - this.getLength();
+  },
+  paidPerPlace() {
+    //который добавляет к счету нашего отеля(bankAccount) стоимость одного места(priceByPlace)
+    this.bankAccount += this.priceByPlace;
+  },
+  checkInGuest(firstName, lastName, money) {
+    //который имеет 3 аргумента. Имя, фамилия и количество денег.
+    // NewGuest();
+    if (this.getActualFreePlace <= 0) return 'Sorry, we have not free spaces';
+    if (money < this.priceByPlace) return 'Sorry, you have not enough money';
+    money -= this.priceByPlace;
+    this.paidPerPlace();
+    this.guests[this.guestsId++] = {
+      firstName: firstName,
+      lastName: lastName,
+      money: money,
+    };
+  },
 };
-
-
-// function NewGuest () {
-//     this.guests = '22';
-//     this.guests[22] = 'sssssssss';
-
-
-// }
-
-// hotel.getLength();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

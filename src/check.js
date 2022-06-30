@@ -9,4 +9,3 @@ console.log(hotel.checkInGuest('4', '5', '6'));
 console.log(hotel.checkInGuest('7', '8', '9'));
 
 console.log(hotel);
-
