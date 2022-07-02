@@ -69,7 +69,6 @@ export const hotel = {
   },
   checkInGuest(firstName, lastName, money) {
     //который имеет 3 аргумента. Имя, фамилия и количество денег.
-    // NewGuest();
     if (this.getActualFreePlace <= 0) return 'Sorry, we have not free spaces';
     if (money < this.priceByPlace) return 'Sorry, you have not enough money';
     money -= this.priceByPlace;
